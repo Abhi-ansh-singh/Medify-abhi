@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Typography } from "@material-tailwind/react";
+import { App_url } from "./Config";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BookingPage, HomePage, MyBookings } from "./Pages";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="bg-primary w-full h-10 flex justify-center items-center drop-shadow-2xl relative">
+        <Typography variant="paragraph" color="white">
+          The health and well-being of our patients and their health care team
+          will always be our priority, so we follow the best practices for
+          cleanliness.
+        </Typography>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route>
+            <Route path={App_url.HomePage} element={<HomePage />} />
+            <Route path={App_url.BookingPage} element={<BookingPage />} />
+            <Route path={App_url.MyBookings} element={<MyBookings />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
